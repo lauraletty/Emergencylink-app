@@ -51,7 +51,7 @@ fun LoginScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .paint(painterResource(id = R.drawable.hos), contentScale = ContentScale.FillBounds),
+            .paint(painterResource(id = R.drawable.health3), contentScale = ContentScale.FillBounds),
         horizontalAlignment = Alignment.CenterHorizontally)
     {
         Image(painter = painterResource(id = R.drawable.logo),
