@@ -51,20 +51,36 @@ fun LoginScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .paint(painterResource(id = R.drawable.health3), contentScale = ContentScale.FillBounds),
-        horizontalAlignment = Alignment.CenterHorizontally)
+            .paint(
+                painterResource(id = R.drawable.health3),
+                contentScale = ContentScale.FillBounds
+            ),
+        horizontalAlignment = Alignment.CenterHorizontally
+    )
     {
-        Image(painter = painterResource(id = R.drawable.logo),
+        Image(
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Emergency",
             modifier = Modifier
                 .size(width = 120.dp, height = 140.dp)
-                .clip(RoundedCornerShape(size = 100.dp)))
+                .clip(RoundedCornerShape(size = 100.dp))
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Text(text = "Welcome", fontSize = 30.sp, fontWeight = FontWeight.ExtraBold, color = Color.Black)
+        Text(
+            text = "Welcome",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.ExtraBold,
+            color = Color.Black
+        )
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Login in to your account", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color.Black)
+        Text(
+            text = "Login in to your account",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black
+        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -117,13 +133,16 @@ fun LoginScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        Text(text = "Dont have an account yet",
+        Text(
+            text = "Dont have an account yet",
             modifier = Modifier
                 .clickable {
                     navController.navigate(SIGNUP_URL)
                 },
-            fontSize = 12.sp)
+            fontSize = 12.sp
+        )
     }
+
 }
 
 @Preview(showBackground = true, showSystemUi = true)

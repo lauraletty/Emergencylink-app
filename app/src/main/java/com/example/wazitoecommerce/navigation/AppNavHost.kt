@@ -8,7 +8,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.firebasestorage.ui.theme.screens.login.LoginScreen
 import com.example.firebasestorage.ui.theme.screens.signup.SignupScreen
+import com.example.wazitoecommerce.ui.theme.screens.call.callscreen
 import com.example.wazitoecommerce.ui.theme.screens.home.HomeScreen
+import com.example.wazitoecommerce.ui.theme.screens.home.dashboardscreen
 import com.example.wazitoecommerce.ui.theme.screens.products.AddProductsScreen
 import com.example.wazitoecommerce.ui.theme.screens.products.ViewProductsScreen
 
@@ -37,6 +39,12 @@ fun AppNavHost(
         }
         composable(VIEW_PRODUCTS_URL){
             ViewProductsScreen(navController = navController)
+        }
+        composable(DASHBOARD_URL){
+            dashboardscreen(navController = navController)
+        }
+        composable(CALL_URL){
+            callscreen(navController = navController)
         }
     }
 }
