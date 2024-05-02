@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -52,19 +53,12 @@ fun LoginScreen(navController: NavHostController) {
         modifier = Modifier
             .fillMaxSize()
             .paint(
-                painterResource(id = R.drawable.health3),
+                painterResource(id = R.drawable.health),
                 contentScale = ContentScale.FillBounds
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     )
     {
-        Image(
-            painter = painterResource(id = R.drawable.logo),
-            contentDescription = "Emergency",
-            modifier = Modifier
-                .size(width = 120.dp, height = 140.dp)
-                .clip(RoundedCornerShape(size = 100.dp))
-        )
 
         Spacer(modifier = Modifier.height(20.dp))
 
@@ -121,14 +115,17 @@ fun LoginScreen(navController: NavHostController) {
 
 
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         Button(onClick = {
             navController.navigate(HOME_URL)
 
 
         }) {
-            Text(text = "Login")
+            Text(text = "Login",
+                modifier = Modifier
+                    .size(width = 120.dp, height = 20.dp),
+                textAlign = TextAlign.Center)
         }
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -139,7 +136,8 @@ fun LoginScreen(navController: NavHostController) {
                 .clickable {
                     navController.navigate(SIGNUP_URL)
                 },
-            fontSize = 12.sp
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold
         )
     }
 

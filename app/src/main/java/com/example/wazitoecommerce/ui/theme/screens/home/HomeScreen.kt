@@ -1,5 +1,6 @@
 package com.example.wazitoecommerce.ui.theme.screens.home
 
+import android.content.Intent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -15,16 +16,28 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +45,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
@@ -39,29 +53,53 @@ import com.example.wazitoecommerce.navigation.ADD_PRODUCTS_URL
 import com.example.wazitoecommerce.navigation.CALL_URL
 import com.example.wazitoecommerce.navigation.DASHBOARD_URL
 import com.example.wazitoecommerce.navigation.VIEW_PRODUCTS_URL
+import com.example.wazitoecommerce.ui.theme.Pink40
+import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
+import java.lang.ProcessBuilder.Redirect
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController:NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(PurpleGrey40),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+
     )
     {
-        
+
+        //TopAppBar
+        val mContext = LocalContext.current
+        TopAppBar(title = { },
+            colors = TopAppBarDefaults.mediumTopAppBarColors(Color.DarkGray),
+            navigationIcon = {
+                IconButton(onClick = {
+                    val callIntent= Intent(Intent.ACTION_DIAL)
+                    callIntent.data="tel:911".toUri()
+                    mContext.startActivity(callIntent)
+                }) {
+                    Icon(imageVector = Icons.Default.Home, contentDescription = "arrowback",
+                        tint = Color.White,
+                        )
+
+
+                }
+            },
+        )
+        //end of TopAppBar
+      Spacer(modifier = Modifier.height(20.dp))
         Text(text = "Choose what you want.", fontSize = 25.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(20.dp))
         Row (modifier = Modifier
-            .padding(25.dp)){
+            .padding(10.dp,top = 70.dp)){
             //Column1
             Column {
                 Card(modifier = Modifier
-                    .height(250.dp)
+                    .height(400.dp)
                     .width(150.dp),
-                    border = BorderStroke(width = 5.dp, color = Color.Black)
+                    border = BorderStroke(width = 3.dp, color = Pink40)
                     ) {
                     Box(
                         modifier = Modifier
@@ -72,9 +110,9 @@ fun HomeScreen(navController:NavHostController) {
                             painter = painterResource(id = R.drawable.call),
                             contentDescription = "help",
                             modifier = Modifier
-                                .size(100.dp)
-                                .clip(CircleShape),
-                            contentScale = ContentScale.FillBounds
+                                .size(150.dp)
+                                .padding(top = 50.dp),
+                            contentScale = ContentScale.Inside
                         )
                         Spacer(modifier = Modifier.height(20.dp))
 
@@ -84,15 +122,27 @@ fun HomeScreen(navController:NavHostController) {
 
 
 
-                    Spacer(modifier = Modifier.height(5.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
                         text = "Emergency Call",
-                        fontSize = 15.sp,
+                        fontSize = 20.sp,
                         fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.ExtraBold,
                         textAlign = TextAlign.Center,
+                        color = Color.Black,
                         modifier = Modifier.padding(start = 30.dp)
                     )
+
+                    Spacer(modifier = Modifier.height(15.dp))
+
+                    Text(text = "Press the button below to call for an ambulance in order to get help.",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        color = Black,
+                       modifier = Modifier
+                           .padding(start = 30.dp, end = 30.dp))
+
 
                     Button(
                         onClick = {
@@ -118,9 +168,9 @@ fun HomeScreen(navController:NavHostController) {
             //Column2
             Column {
                 Card(modifier = Modifier
-                    .height(250.dp)
+                    .height(400.dp)
                     .width(150.dp),
-                    border = BorderStroke(width = 5.dp, color = Color.Black)
+                    border = BorderStroke(width = 3.dp, color = Pink40 )
                 ) {
                     Box(
                         modifier = Modifier
@@ -131,10 +181,11 @@ fun HomeScreen(navController:NavHostController) {
                             painter = painterResource(id = R.drawable.aid),
                             contentDescription = "help",
                             modifier = Modifier
-                                .size(100.dp),
-                            contentScale = ContentScale.FillBounds
+                                .size(150.dp)
+                                .padding(top = 50.dp),
+                            contentScale = ContentScale.Inside
                         )
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(15.dp))
 
 
                     }
@@ -142,15 +193,27 @@ fun HomeScreen(navController:NavHostController) {
 
 
 
-                    Spacer(modifier = Modifier.height(5.dp))
+                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
                         text = "First Aid",
-                        fontSize = 15.sp,
+                        fontSize = 20.sp,
                         fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.ExtraBold,
                         textAlign = TextAlign.Center,
-                        modifier = Modifier.padding(start = 30.dp)
+                        color = Color.Black,
+                        modifier = Modifier.padding(start = 40.dp)
                     )
+                    Spacer(modifier = Modifier.height(15.dp))
+
+                    Text(text = "Here are fast and easy first aid tips to help you with the emergency .",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        color = Black,
+                        modifier = Modifier
+                            .padding(start = 30.dp, end = 30.dp))
+
+
 
                     Button(
                         onClick = {
@@ -161,7 +224,7 @@ fun HomeScreen(navController:NavHostController) {
                     )
                     {
                         Text(
-                            text = "CALL",
+                            text = "START",
                             color = Color.White
                         )
 

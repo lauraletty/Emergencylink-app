@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -48,6 +49,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -56,6 +58,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.navigation.NOSEBLEED_URL
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,6 +81,7 @@ fun dashboardscreen(navController: NavHostController){
                     Icon(imageVector = Icons.Default.Call, contentDescription = "arrowback",
                         tint = Color.Black)
 
+
                 }
             },
         )
@@ -89,8 +93,9 @@ fun dashboardscreen(navController: NavHostController){
                 fontSize = 30.sp,
                 fontFamily = FontFamily.Cursive,
                 fontWeight = FontWeight.ExtraBold,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .padding(start = 20.dp))
+                    .padding(start = 40.dp))
             Spacer(modifier = Modifier.height(10.dp))
             Row (modifier = Modifier
                 .padding(25.dp)){
@@ -115,6 +120,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "Nosebleed",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                       navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(5.dp))
 

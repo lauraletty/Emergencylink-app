@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
@@ -32,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -96,7 +98,7 @@ fun SignupScreen(navController: NavHostController) {
             visualTransformation = PasswordVisualTransformation()
         )
 
-        Spacer(modifier = Modifier.height(35.dp))
+        Spacer(modifier = Modifier.height(40.dp))
 
         Button(onClick = {
             // HANDLE SIGNUP LOGIC //
@@ -104,7 +106,10 @@ fun SignupScreen(navController: NavHostController) {
             xyz.signup(email.text.trim(),password.text.trim())
 
         }) {
-            Text(text = "Signup")
+            Text(text = "Signup",
+                modifier = Modifier
+                    .size(width = 120.dp, height = 20.dp),
+                textAlign = TextAlign.Center)
         }
 
         Spacer(modifier = Modifier.height(25.dp))
@@ -114,7 +119,8 @@ fun SignupScreen(navController: NavHostController) {
                 .clickable {
                     navController.navigate(LOGIN_URL)
                 },
-            fontSize = 20.sp)
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold)
     }
 }
 
