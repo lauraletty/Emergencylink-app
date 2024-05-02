@@ -43,6 +43,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.data.AuthViewModel
 import com.example.wazitoecommerce.navigation.HOME_URL
 import com.example.wazitoecommerce.navigation.SIGNUP_URL
 
@@ -116,9 +117,11 @@ fun LoginScreen(navController: NavHostController) {
 
 
         Spacer(modifier = Modifier.height(40.dp))
+        val authViewModel = AuthViewModel(navController, context)
 
         Button(onClick = {
             navController.navigate(HOME_URL)
+
 
 
         }) {

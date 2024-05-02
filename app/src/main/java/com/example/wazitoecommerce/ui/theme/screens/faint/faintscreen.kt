@@ -17,7 +17,7 @@ fun nosebleedscreen(navController: NavHostController){
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Image(painter = painterResource(id = R.drawable.),
+        Image(painter = painterResource(id = R.drawable.faintaid),
             contentDescription = "faint aid",
             modifier = Modifier
                 .fillMaxSize())

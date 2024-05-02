@@ -63,9 +63,26 @@ fun SignupScreen(navController: NavHostController) {
 
         Spacer(modifier = Modifier.height(30.dp))
 
+        var name by remember { mutableStateOf(TextFieldValue("")) }
         var email by remember { mutableStateOf(TextFieldValue("")) }
         var password by remember { mutableStateOf(TextFieldValue("")) }
         var context = LocalContext.current
+
+
+
+        OutlinedTextField(
+            value = name,
+            onValueChange = { name = it },
+            placeholder = { Text(text = "Username") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "email") },
+            modifier =
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)
+                .padding(top = 100.dp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+        )
+        Spacer(modifier = Modifier.height(35.dp))
 
         OutlinedTextField(
             value = email,
