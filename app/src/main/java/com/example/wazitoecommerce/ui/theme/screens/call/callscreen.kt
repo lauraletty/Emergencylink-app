@@ -23,12 +23,13 @@ import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.firebasestorage.ui.theme.screens.login.LoginScreen
+import com.example.wazitoecommerce.ui.theme.screens.login.LoginScreen
 import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
 import com.example.wazitoecommerce.ui.theme.screens.home.HomeScreen
@@ -49,7 +50,7 @@ fun callscreen(navController: NavHostController) {
         ) {
             Card(
                 modifier = Modifier
-                    .height(150.dp)
+                    .height(400.dp)
                     .fillMaxWidth()
                     .background(Blue)
 
@@ -78,7 +79,10 @@ fun callscreen(navController: NavHostController) {
             ) {
                 androidx.compose.material3.Text(
                     text = "CALL",
-                    color = Color.Black
+                    color = Color.Black,
+                    modifier = Modifier
+                        .size(width = 120.dp, height = 20.dp),
+                    textAlign = TextAlign.Center
                 )
 
 

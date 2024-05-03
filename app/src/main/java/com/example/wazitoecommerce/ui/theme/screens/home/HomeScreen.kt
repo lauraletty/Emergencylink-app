@@ -80,9 +80,7 @@ fun HomeScreen(navController:NavHostController) {
                     callIntent.data="tel:911".toUri()
                     mContext.startActivity(callIntent)
                 }) {
-                    Icon(imageVector = Icons.Default.Home, contentDescription = "arrowback",
-                        tint = Color.White,
-                        )
+
 
 
                 }
@@ -149,7 +147,7 @@ fun HomeScreen(navController:NavHostController) {
                                   navController.navigate(CALL_URL)
                         },
                         modifier = Modifier
-                            .padding(start = 30.dp, top = 10.dp)
+                            .padding(start = 40.dp, top = 10.dp)
                     )
                     {
                         Text(
@@ -220,7 +218,7 @@ fun HomeScreen(navController:NavHostController) {
                                   navController.navigate(DASHBOARD_URL)
                         },
                         modifier = Modifier
-                            .padding(start = 30.dp, top = 10.dp)
+                            .padding(start = 40.dp, top = 10.dp)
                     )
                     {
                         Text(

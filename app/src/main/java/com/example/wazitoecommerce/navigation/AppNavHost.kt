@@ -6,15 +6,16 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.firebasestorage.ui.theme.screens.login.LoginScreen
-import com.example.firebasestorage.ui.theme.screens.signup.SignupScreen
+
 import com.example.wazitoecommerce.ui.theme.screens.HOME.Homescreen
 import com.example.wazitoecommerce.ui.theme.screens.call.callscreen
 import com.example.wazitoecommerce.ui.theme.screens.faint.nosebleedscreen
 import com.example.wazitoecommerce.ui.theme.screens.home.HomeScreen
 import com.example.wazitoecommerce.ui.theme.screens.home.dashboardscreen
+import com.example.wazitoecommerce.ui.theme.screens.login.LoginScreen
 import com.example.wazitoecommerce.ui.theme.screens.products.AddProductsScreen
 import com.example.wazitoecommerce.ui.theme.screens.products.ViewProductsScreen
+import com.example.wazitoecommerce.ui.theme.screens.signup.SignupScreen
 
 
 @Composable

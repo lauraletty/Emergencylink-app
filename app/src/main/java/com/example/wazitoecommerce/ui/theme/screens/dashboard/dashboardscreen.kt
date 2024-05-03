@@ -152,6 +152,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "Faint",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
 
@@ -183,6 +187,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "Chestpain",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
 
                     Spacer(modifier = Modifier.height(3.dp))
@@ -211,6 +219,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "Heartattack",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
 
@@ -242,6 +254,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "Fever",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
 
@@ -269,6 +285,10 @@ fun dashboardscreen(navController: NavHostController){
                         text = "AnkleSprain",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
 
@@ -276,6 +296,139 @@ fun dashboardscreen(navController: NavHostController){
                 //End of Column3
             }
             //End of Row 3
+
+            Row (modifier = Modifier
+                .padding(25.dp)){
+                //Column1
+                Column {
+                    Card(modifier = Modifier
+                        .height(100.dp)
+                        .width(150.dp)) {
+                        Box (modifier = Modifier
+                            .fillMaxWidth(),
+                            contentAlignment = Alignment.Center){
+                            Image(painter = painterResource(id = R.drawable.spinalinjury),
+                                contentDescription = "Fever",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.FillBounds)
+
+                        }
+
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "Spinal injury",
+                        fontSize = 15.sp,
+                        fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
+                        fontWeight = FontWeight.ExtraBold)
+                    Spacer(modifier = Modifier.height(3.dp))
+
+                }
+                //End of Column1
+                Spacer(modifier = Modifier.width(20.dp))
+                //Column2
+                Column {
+                    Card(modifier = Modifier
+                        .height(100.dp)
+                        .width(150.dp)) {
+                        Box (modifier = Modifier
+                            .fillMaxWidth(),
+                            contentAlignment = Alignment.Center){
+                            Image(painter = painterResource(id = R.drawable.brokenleg),
+                                contentDescription = "anklesprain",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.FillBounds)
+
+                        }
+
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "Broken Limbs",
+                        fontSize = 15.sp,
+                        fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
+                        fontWeight = FontWeight.ExtraBold)
+                    Spacer(modifier = Modifier.height(3.dp))
+
+                }
+                //End of Column3
+            }
+            //End of Row 3
+
+            Row (modifier = Modifier
+                .padding(25.dp)){
+                //Column1
+                Column {
+                    Card(modifier = Modifier
+                        .height(100.dp)
+                        .width(150.dp)) {
+                        Box (modifier = Modifier
+                            .fillMaxWidth(),
+                            contentAlignment = Alignment.Center){
+                            Image(painter = painterResource(id = R.drawable.burn),
+                                contentDescription = "Fever",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.FillBounds)
+
+                        }
+
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "Burn",
+                        fontSize = 15.sp,
+                        fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
+                        fontWeight = FontWeight.ExtraBold)
+                    Spacer(modifier = Modifier.height(3.dp))
+
+                }
+                //End of Column1
+                Spacer(modifier = Modifier.width(20.dp))
+                //Column2
+                Column {
+                    Card(modifier = Modifier
+                        .height(100.dp)
+                        .width(150.dp)) {
+                        Box (modifier = Modifier
+                            .fillMaxWidth(),
+                            contentAlignment = Alignment.Center){
+                            Image(painter = painterResource(id = R.drawable.snakebite),
+                                contentDescription = "anklesprain",
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.FillBounds)
+
+                        }
+
+                    }
+                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "Snakebite",
+                        fontSize = 15.sp,
+                        fontFamily = FontFamily.Serif,
+                        modifier = Modifier
+                            .clickable {
+                                navController.navigate(NOSEBLEED_URL)
+                            },
+                        fontWeight = FontWeight.ExtraBold)
+                    Spacer(modifier = Modifier.height(3.dp))
+
+                }
+                //End of Column3
+            }
+            //End of Row 3
+
 
         }
 

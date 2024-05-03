@@ -42,10 +42,10 @@ fun Homescreen(navController: NavHostController){
             contentDescription = "Emergency",
             modifier = Modifier
                 .size(width = 120.dp, height = 140.dp)
-                .padding(top = 20.dp)
+                .padding(top = 60.dp)
                 .clip(RoundedCornerShape(size = 100.dp))
         )
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         Text(text = "Welcome.Easy, fast and reliable assistance.",
             fontSize = 30.sp,
@@ -54,7 +54,7 @@ fun Homescreen(navController: NavHostController){
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(start = 30.dp, end = 30.dp))
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
         Button(onClick = {
             navController.navigate(LOGIN_URL)
