@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -59,31 +60,35 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.navigation.NOSEBLEED_URL
+import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun dashboardscreen(navController: NavHostController){
     Column(modifier = Modifier
-        .fillMaxSize())
+        .fillMaxSize()
+        .background(PurpleGrey40))
     {
 
         //TopAppBar
         val mContext = LocalContext.current
-        TopAppBar(title = { Text(text = "Firstaid", color = Color.Black)},
-            colors = TopAppBarDefaults.mediumTopAppBarColors(Color.White),
-            navigationIcon = {
+        TopAppBar(title = { Text(text = "Firstaid", color = Color.Red)},
+            colors = TopAppBarDefaults.mediumTopAppBarColors(Color.DarkGray),
+
+
+            actions = {
                 IconButton(onClick = {
                     val callIntent=Intent(Intent.ACTION_DIAL)
                     callIntent.data="tel:911".toUri()
-                    mContext.startActivity(callIntent)
-                }) {
-                    Icon(imageVector = Icons.Default.Call, contentDescription = "arrowback",
-                        tint = Color.Black)
-
-
+                    mContext.startActivity(callIntent) }) {
+                    Icon(
+                        imageVector = Icons.Default.Call,
+                        contentDescription = "call",
+                        tint = Color.Red
+                    )
                 }
-            },
+            }
         )
         //end of TopAppBar
         Column(modifier = Modifier
@@ -434,8 +439,9 @@ fun dashboardscreen(navController: NavHostController){
 
 
     }
-
 }
+
+
 @Preview(showBackground = true)
 @Composable
 fun dashboardPreview(){

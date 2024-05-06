@@ -4,13 +4,16 @@ package com.example.wazitoecommerce.ui.theme.screens.HOME
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,6 +30,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.navigation.LOGIN_URL
+import com.example.wazitoecommerce.navigation.SIGNUP_URL
 import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 @Composable
@@ -41,35 +45,77 @@ fun Homescreen(navController: NavHostController){
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Emergency",
             modifier = Modifier
-                .size(width = 120.dp, height = 140.dp)
-                .padding(top = 60.dp)
+                .size(width = 150.dp, height = 150.dp)
+                .padding(top = 80.dp)
                 .clip(RoundedCornerShape(size = 100.dp))
         )
-        Spacer(modifier = Modifier.height(100.dp))
-
-        Text(text = "Welcome.Easy, fast and reliable assistance.",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.ExtraBold,
-            color = Color.Black,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .padding(start = 30.dp, end = 30.dp))
-        Spacer(modifier = Modifier.height(100.dp))
-
-        Button(onClick = {
-            navController.navigate(LOGIN_URL)
-        }) {
-
-            Text(text = "LOGIN",
-                fontWeight = FontWeight.ExtraBold,
-                modifier = Modifier
-                    .size(120.dp, height = 20.dp)
-                    .padding(start = 30.dp, end = 30.dp),
-                textAlign = TextAlign.Center,
-                )
 
 
-        }
+        
+        Spacer(modifier = Modifier
+            .height(80.dp)
+            .padding(top = 100.dp))
+
+       Column(
+           modifier = Modifier
+               .padding(top = 250.dp)
+       ) {
+           Button(onClick = {
+               navController.navigate(LOGIN_URL)
+           },
+               modifier = Modifier.padding(start = 100.dp)) {
+
+               Text(text = "LOGIN",
+                   fontWeight = FontWeight.ExtraBold,
+                   modifier = Modifier
+                       .size(120.dp, height = 20.dp)
+                       .padding(start = 30.dp, end = 30.dp),
+                   textAlign = TextAlign.Center,
+               )
+
+
+           }
+
+           Spacer(modifier = Modifier.height(20.dp))
+
+           Row {
+               Spacer(modifier = Modifier.width(25.dp))
+
+               Divider(modifier = Modifier
+                   .width(150.dp)
+                   .padding(top = 10.dp, end = 10.dp)
+                   .height(2.dp), color = Color.Black)
+
+               Text(text = "or")
+
+               Divider(modifier = Modifier
+                   .width(150.dp)
+                   .padding(top = 10.dp, start = 10.dp)
+                   .height(2.dp), color = Color.Black)
+
+               Spacer(modifier = Modifier.width(15.dp))
+
+
+           }
+           Spacer(modifier = Modifier.height(10.dp))
+
+           Button(onClick = {
+               navController.navigate(SIGNUP_URL)
+           },
+               modifier = Modifier.padding(start = 100.dp)
+               ) {
+
+               Text(text = "Register",
+                   fontWeight = FontWeight.ExtraBold,
+                   modifier = Modifier
+                       .size(120.dp, height = 20.dp)
+                       .padding(start = 30.dp, end = 30.dp),
+                   textAlign = TextAlign.Center,
+               )
+
+
+           }
+       }
 
     }
 

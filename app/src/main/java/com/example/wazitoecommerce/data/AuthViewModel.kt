@@ -31,10 +31,10 @@ class AuthViewModel(var navController:NavHostController, var context:Context) {
             usersRef.setValue(userProfile).addOnCompleteListener {
                 progress.dismiss()
                 if (it.isSuccessful){
-                    Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, "Successfully signed up.", Toast.LENGTH_SHORT).show()
                     navController.navigate(LOGIN_URL)
                 }else{
-                    Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, "Error.Please try again.", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -45,10 +45,10 @@ class AuthViewModel(var navController:NavHostController, var context:Context) {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             progress.dismiss()
             if (it.isSuccessful){
-                Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.context, "Logged in successfully", Toast.LENGTH_SHORT).show()
                 navController.navigate(HOME_URL)
             }else{
-                Toast.makeText(this.context, "Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.context, "Error.Please try again.", Toast.LENGTH_SHORT).show()
             }
         }
     }

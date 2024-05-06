@@ -1,5 +1,7 @@
 package com.example.wazitoecommerce.ui.theme.screens.signup
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,31 +33,36 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.data.AuthViewModel
 import com.example.wazitoecommerce.navigation.LOGIN_URL
+import com.example.wazitoecommerce.navigation.SIGNUP_URL
+import com.example.wazitoecommerce.ui.theme.Purple40
+import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SignupScreen(navController:NavHostController){
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Purple40),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Emergency Link",
-            color = Color.White,
+            text = "Register your Account.",
+            color = Color.Black,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Cursive
         )
         Spacer(modifier = Modifier.height(30.dp))
 
-        var name by remember { mutableStateOf("") }
+        var username by remember { mutableStateOf("") }
         var email by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
 
         OutlinedTextField(
-            value = name,
-            onValueChange = {name = it},
+            value = username,
+            onValueChange = {username = it},
             label = { Text(text = "Enter name")},
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text
@@ -87,23 +95,25 @@ fun SignupScreen(navController:NavHostController){
         val context = LocalContext.current
         val authViewModel = AuthViewModel(navController, context)
         Button(onClick = {
-            authViewModel.signup(name, email, password)
+            authViewModel.signup(username, email, password)
         },
-            colors =ButtonDefaults.buttonColors(Color.Red),
+            colors =ButtonDefaults.buttonColors(PurpleGrey40),
             shape = RoundedCornerShape(5.dp)) {
             Text(text = "Register")
         }
 
         Spacer(modifier = Modifier.height(30.dp))
 
-        Button(onClick = {
-            navController.navigate(LOGIN_URL)
-        },
-            colors =ButtonDefaults.buttonColors(Color.Red),
-            shape = RoundedCornerShape(5.dp)
-        ) {
-            Text(text = "Login instead")
-        }
+        Text(text = "Have an account.Login.",
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold,
+            textAlign = TextAlign.Center,
+            color = Color.Black,
+
+            modifier = Modifier
+                .clickable {
+                    navController.navigate(LOGIN_URL)
+                })
 
     }
 }

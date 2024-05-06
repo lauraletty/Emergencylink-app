@@ -1,6 +1,8 @@
 package com.example.wazitoecommerce.ui.theme.screens.login
 
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,17 +34,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.data.AuthViewModel
 import com.example.wazitoecommerce.navigation.SIGNUP_URL
+import com.example.wazitoecommerce.ui.theme.Purple40
+import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(navController:NavHostController){
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Purple40),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Emergency Link",
-            color = Color.White,
+            text = "Login to your Account.",
+            color = Color.Black,
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
             fontFamily = FontFamily.Cursive
@@ -77,20 +84,22 @@ fun LoginScreen(navController:NavHostController){
         Button(onClick = {
             authViewModel.login(email, password)
         },
-            colors =ButtonDefaults.buttonColors(Color.Red),
+            colors =ButtonDefaults.buttonColors(PurpleGrey40),
             shape = RoundedCornerShape(5.dp)) {
             Text(text = "Login")
         }
         Spacer(modifier = Modifier.height(30.dp))
 
-        Button(onClick = {
-            navController.navigate(SIGNUP_URL)
-        },
-            colors = ButtonDefaults.buttonColors(Color.Red),
-            shape = RoundedCornerShape(5.dp)
-        ) {
-            Text(text = "Register instead")
-        }
+       Text(text = "Dont have an account yet.Sign Up.",
+           fontSize = 20.sp,
+           fontWeight = FontWeight.ExtraBold,
+           textAlign = TextAlign.Center,
+           color = Color.Black,
+
+           modifier = Modifier
+               .clickable {
+                   navController.navigate(SIGNUP_URL)
+               })
     }
 }
 
