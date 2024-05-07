@@ -20,7 +20,7 @@ import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 fun brokenscreen(navController: NavHostController){
     Column (
         modifier = Modifier
-            .size(width = 80.dp, height = 100.dp)
+            .fillMaxSize()
             .background(PurpleGrey40),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
