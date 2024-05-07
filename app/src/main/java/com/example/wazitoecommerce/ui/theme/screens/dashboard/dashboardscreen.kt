@@ -59,7 +59,14 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.navigation.ANKLE_URL
+import com.example.wazitoecommerce.navigation.BROKENLIMB_URL
+import com.example.wazitoecommerce.navigation.BURN_URL
+import com.example.wazitoecommerce.navigation.CHEST_URL
+import com.example.wazitoecommerce.navigation.FAINT_URL
+import com.example.wazitoecommerce.navigation.HEARTATTACK_URL
 import com.example.wazitoecommerce.navigation.NOSEBLEED_URL
+import com.example.wazitoecommerce.navigation.SPINAL_URL
 import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 
@@ -159,7 +166,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(FAINT_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
@@ -194,7 +201,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(CHEST_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
 
@@ -226,7 +233,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(HEARTATTACK_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
@@ -292,7 +299,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(ANKLE_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
@@ -327,7 +334,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(SPINAL_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
@@ -358,7 +365,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(BROKENLIMB_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
@@ -393,7 +400,7 @@ fun dashboardscreen(navController: NavHostController){
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(BURN_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))

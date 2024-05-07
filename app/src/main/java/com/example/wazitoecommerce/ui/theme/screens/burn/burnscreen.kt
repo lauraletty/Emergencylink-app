@@ -17,14 +17,14 @@ import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 @Composable
-fun heartattackscreen(navController: NavHostController){
+fun burnscreen(navController: NavHostController){
     Column (
         modifier = Modifier
             .size(width = 80.dp, height = 100.dp)
             .background(PurpleGrey40),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Image(painter = painterResource(id = R.drawable.heartattackaid),
+        Image(painter = painterResource(id = R.drawable.burnaid),
             contentDescription ="first aid nose",
             modifier = Modifier
                 .size(width = 80.dp, height = 100.dp)
@@ -36,7 +36,7 @@ fun heartattackscreen(navController: NavHostController){
 
 @Composable
 @Preview(showBackground = true)
-fun heartattackscreenPreview(){
-    heartattackscreen(navController = rememberNavController())
+fun burnscreenPreview(){
+    burnscreen(navController = rememberNavController())
 
 }

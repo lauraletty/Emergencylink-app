@@ -17,7 +17,7 @@ import com.example.wazitoecommerce.R
 import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 @Composable
-fun heartattackscreen(navController: NavHostController){
+fun spinalscreen(navController: NavHostController){
     Column (
         modifier = Modifier
             .size(width = 80.dp, height = 100.dp)
@@ -36,7 +36,7 @@ fun heartattackscreen(navController: NavHostController){
 
 @Composable
 @Preview(showBackground = true)
-fun heartattackscreenPreview(){
-    heartattackscreen(navController = rememberNavController())
+fun spinalscreenPreview(){
+    spinalscreen(navController = rememberNavController())
 
 }
