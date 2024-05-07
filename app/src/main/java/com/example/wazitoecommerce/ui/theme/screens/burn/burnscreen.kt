@@ -27,7 +27,7 @@ fun burnscreen(navController: NavHostController){
         Image(painter = painterResource(id = R.drawable.burnaid),
             contentDescription ="first aid nose",
             modifier = Modifier
-                .size(width = 80.dp, height = 100.dp)
+                .fillMaxSize()
         )
 
     }
