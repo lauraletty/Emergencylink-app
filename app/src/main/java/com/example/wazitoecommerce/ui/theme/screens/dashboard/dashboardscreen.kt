@@ -253,8 +253,8 @@ fun dashboardscreen(navController: NavHostController){
                         Box (modifier = Modifier
                             .fillMaxWidth(),
                             contentAlignment = Alignment.Center){
-                            Image(painter = painterResource(id = R.drawable.fever),
-                                contentDescription = "Fever",
+                            Image(painter = painterResource(id = R.drawable.brokenleg),
+                                contentDescription = "anklesprain",
                                 modifier = Modifier.fillMaxSize(),
                                 contentScale = ContentScale.FillBounds)
 
@@ -262,18 +262,19 @@ fun dashboardscreen(navController: NavHostController){
 
                     }
                     Spacer(modifier = Modifier.height(5.dp))
-                    androidx.compose.material3.Text(
-                        text = "Fever",
+                    Text(
+                        text = "Broken Limbs",
                         fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
                         modifier = Modifier
                             .clickable {
-                                navController.navigate(NOSEBLEED_URL)
+                                navController.navigate(BROKENLIMB_URL)
                             },
                         fontWeight = FontWeight.ExtraBold)
                     Spacer(modifier = Modifier.height(3.dp))
 
                 }
+
                 //End of Column1
                 Spacer(modifier = Modifier.width(20.dp))
                 //Column2
@@ -343,41 +344,7 @@ fun dashboardscreen(navController: NavHostController){
                 //End of Column1
                 Spacer(modifier = Modifier.width(20.dp))
                 //Column2
-                Column {
-                    Card(modifier = Modifier
-                        .height(100.dp)
-                        .width(150.dp)) {
-                        Box (modifier = Modifier
-                            .fillMaxWidth(),
-                            contentAlignment = Alignment.Center){
-                            Image(painter = painterResource(id = R.drawable.brokenleg),
-                                contentDescription = "anklesprain",
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.FillBounds)
 
-                        }
-
-                    }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Text(
-                        text = "Broken Limbs",
-                        fontSize = 15.sp,
-                        fontFamily = FontFamily.Serif,
-                        modifier = Modifier
-                            .clickable {
-                                navController.navigate(BROKENLIMB_URL)
-                            },
-                        fontWeight = FontWeight.ExtraBold)
-                    Spacer(modifier = Modifier.height(3.dp))
-
-                }
-                //End of Column3
-            }
-            //End of Row 3
-
-            Row (modifier = Modifier
-                .padding(25.dp)){
-                //Column1
                 Column {
                     Card(modifier = Modifier
                         .height(100.dp)
@@ -406,40 +373,11 @@ fun dashboardscreen(navController: NavHostController){
                     Spacer(modifier = Modifier.height(3.dp))
 
                 }
-                //End of Column1
-                Spacer(modifier = Modifier.width(20.dp))
-                //Column2
-                Column {
-                    Card(modifier = Modifier
-                        .height(100.dp)
-                        .width(150.dp)) {
-                        Box (modifier = Modifier
-                            .fillMaxWidth(),
-                            contentAlignment = Alignment.Center){
-                            Image(painter = painterResource(id = R.drawable.snakebite),
-                                contentDescription = "anklesprain",
-                                modifier = Modifier.fillMaxSize(),
-                                contentScale = ContentScale.FillBounds)
 
-                        }
-
-                    }
-                    Spacer(modifier = Modifier.height(5.dp))
-                    Text(
-                        text = "Snakebite",
-                        fontSize = 15.sp,
-                        fontFamily = FontFamily.Serif,
-                        modifier = Modifier
-                            .clickable {
-                                navController.navigate(NOSEBLEED_URL)
-                            },
-                        fontWeight = FontWeight.ExtraBold)
-                    Spacer(modifier = Modifier.height(3.dp))
-
-                }
-                //End of Column3
+                //End of Column2
             }
             //End of Row 3
+
 
 
         }
