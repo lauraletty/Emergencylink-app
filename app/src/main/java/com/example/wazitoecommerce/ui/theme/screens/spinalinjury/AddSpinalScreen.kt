@@ -1,4 +1,5 @@
-package com.example.wazitoecommerce.ui.theme.screens.products
+package com.example.wazitoecommerce.ui.theme.screens.spinalinjury
+
 
 import android.content.Context
 import android.net.Uri
@@ -6,6 +7,7 @@ import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,63 +36,69 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.wazitoecommerce.data.ProductViewModel
-import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
+import com.example.wazitoecommerce.data.SpinalViewModel
+import com.example.wazitoecommerce.ui.theme.PurpleGrey40
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddProductsScreen(navController:NavHostController){
+fun AddSpinalScreen(navController: NavHostController){
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier.fillMaxSize()
+            .background(PurpleGrey40),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Add Products",
-            fontSize = 40.sp,
+            text = "Spinal injury first aid instruction",
+            fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Cursive
+            fontFamily = FontFamily.Serif
         )
 
-        var productName by remember { mutableStateOf("") }
-        var productQuantity by remember { mutableStateOf("") }
-        var productPrice by remember { mutableStateOf("") }
+        var instruction by remember { mutableStateOf("") }
+        var instruction1 by remember { mutableStateOf("") }
+        var instruction2 by remember { mutableStateOf("") }
         val context = LocalContext.current
 
         Spacer(modifier = Modifier.height(30.dp))
 
         OutlinedTextField(
-            value = productName,
-            onValueChange = { productName = it },
-            label = { Text(text = "Product name *") },
+            value = instruction,
+            onValueChange = { instruction= it },
+            label = { Text(text = "Spinal injury aid instruction *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
-            value = productQuantity,
-            onValueChange = { productQuantity = it },
-            label = { Text(text = "Product quantity *") },
+            value = instruction1,
+            onValueChange = { instruction1= it },
+            label = { Text(text = "Spinal injury aid instruction *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
-            value = productPrice,
-            onValueChange = { productPrice = it },
-            label = { Text(text = "Product price *") },
+            value = instruction2,
+            onValueChange = { instruction2= it },
+            label = { Text(text = "Spinal injury aid instruction *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
-
 
 
         //---------------------IMAGE PICKER START-----------------------------------//
 
         var modifier = Modifier
-        ImagePicker(modifier,context, navController, productName.trim(), productQuantity.trim(), productPrice.trim())
+        ImagePickerChest(
+            modifier,context,
+            navController,
+            instruction.trim(),
+            instruction1.trim(),
+            instruction2.trim()
+        )
 
         //---------------------IMAGE PICKER END-----------------------------------//
 
@@ -100,7 +108,14 @@ fun AddProductsScreen(navController:NavHostController){
 }
 
 @Composable
-fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: NavHostController, name:String, quantity:String, price:String) {
+fun ImagePickerChest(
+    modifier: Modifier = Modifier,
+    context: Context,
+    navController: NavHostController,
+    Instruction:String,
+    instruction1:String,
+    instruction2:String
+) {
     var hasImage by remember { mutableStateOf(false) }
     var imageUri by remember { mutableStateOf<Uri?>(null) }
 
@@ -136,8 +151,8 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: N
 
             Button(onClick = {
                 //-----------WRITE THE UPLOAD LOGIC HERE---------------//
-                var productRepository = ProductViewModel(navController,context)
-                productRepository.uploadProduct(name, quantity, price,imageUri!!)
+                var InstructionRepository = SpinalViewModel(navController,context)
+                InstructionRepository.uploadInstruction(Instruction, imageUri!!)
 
 
             }) {
@@ -149,8 +164,6 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context,navController: N
 
 @Composable
 @Preview(showBackground = true)
-fun AddProductsScreenPreview(){
-    WazitoECommerceTheme {
-        AddProductsScreen(navController = rememberNavController())
-    }
+fun AddChestpainScreenPreview(){
+    AddSpinalScreen(navController = rememberNavController())
 }

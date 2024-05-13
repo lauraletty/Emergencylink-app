@@ -1,4 +1,4 @@
-package com.example.wazitoecommerce.ui.theme.screens.faint
+package com.example.wazitoecommerce.ui.theme.screens.chestpain
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

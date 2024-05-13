@@ -1,10 +1,9 @@
 package com.example.wazitoecommerce.ui.theme.screens.home
 
-import android.content.Intent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,80 +14,60 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Call
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.wazitoecommerce.R
-import com.example.wazitoecommerce.navigation.ADD_PRODUCTS_URL
-import com.example.wazitoecommerce.navigation.CALL_URL
-import com.example.wazitoecommerce.navigation.DASHBOARD_URL
-import com.example.wazitoecommerce.navigation.VIEW_PRODUCTS_URL
-import com.example.wazitoecommerce.ui.theme.Pink40
 import com.example.wazitoecommerce.ui.theme.PurpleGrey40
-import com.example.wazitoecommerce.ui.theme.WazitoECommerceTheme
-import java.lang.ProcessBuilder.Redirect
+import com.example.wazitoecommerce.R
+import com.example.wazitoecommerce.navigation.DASHBOARD_URL
+import com.example.wazitoecommerce.navigation.EMERGENCY_URL
+import com.example.wazitoecommerce.navigation.UPLOAD_URL
+import com.example.wazitoecommerce.ui.theme.Pink40
+import com.example.wazitoecommerce.ui.theme.Purple80
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController:NavHostController) {
+fun HomeScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(PurpleGrey40),
         horizontalAlignment = Alignment.CenterHorizontally,
 
-    )
+        )
     {
 
         //TopAppBar
         val mContext = LocalContext.current
-        TopAppBar(title = { },
-            colors = TopAppBarDefaults.mediumTopAppBarColors(Color.DarkGray),
-            navigationIcon = {
-                IconButton(onClick = {
-                    val callIntent= Intent(Intent.ACTION_DIAL)
-                    callIntent.data="tel:911".toUri()
-                    mContext.startActivity(callIntent)
-                }) {
+        TopAppBar(
+            title = { Text(text = "HOMEPAGE", color = Color.Black, fontSize =40.sp, fontWeight = FontWeight.ExtraBold) },
+            colors = TopAppBarDefaults.mediumTopAppBarColors(Purple80),
 
-
-
-                }
-            },
-        )
+            )
         //end of TopAppBar
-      Spacer(modifier = Modifier.height(20.dp))
-        Text(text = "Choose what you want.", fontSize = 25.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
+        Spacer(modifier = Modifier.height(20.dp))
+        Text(text = "Where do you need assistance?", fontSize = 25.sp, fontWeight = FontWeight.ExtraBold, textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(20.dp))
         Row (modifier = Modifier
             .padding(10.dp,top = 70.dp)){
@@ -98,7 +77,7 @@ fun HomeScreen(navController:NavHostController) {
                     .height(400.dp)
                     .width(150.dp),
                     border = BorderStroke(width = 3.dp, color = Pink40)
-                    ) {
+                ) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth(),
@@ -122,8 +101,8 @@ fun HomeScreen(navController:NavHostController) {
 
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "Emergency Call",
-                        fontSize = 20.sp,
+                        text = " Report Emergency",
+                        fontSize = 15.sp,
                         fontFamily = FontFamily.Serif,
                         fontWeight = FontWeight.ExtraBold,
                         textAlign = TextAlign.Center,
@@ -133,29 +112,32 @@ fun HomeScreen(navController:NavHostController) {
 
                     Spacer(modifier = Modifier.height(15.dp))
 
-                    Text(text = "Press the button below to call for an ambulance in order to get help.",
+                    Text(text = "Press the button below to report your emergency and call for help.",
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        color = Black,
-                       modifier = Modifier
-                           .padding(start = 30.dp, end = 30.dp))
+                        color = Color.Black,
+                        modifier = Modifier
+                            .padding(start = 30.dp, end = 30.dp))
 
 
                     Button(
                         onClick = {
-                                  navController.navigate(CALL_URL)
+                            navController.navigate(EMERGENCY_URL)
                         },
+                        colors = ButtonDefaults.buttonColors(Purple80),
                         modifier = Modifier
-                            .padding(start = 40.dp, top = 10.dp)
+                            .padding(start = 50.dp, top = 10.dp)
                     )
                     {
                         Text(
-                            text = "CALL",
+                            text = "NEXT",
                             color = Color.White
                         )
 
                     }
+
+
                 }
                 Spacer(modifier = Modifier.height(5.dp))
 
@@ -168,7 +150,7 @@ fun HomeScreen(navController:NavHostController) {
                 Card(modifier = Modifier
                     .height(400.dp)
                     .width(150.dp),
-                    border = BorderStroke(width = 3.dp, color = Pink40 )
+                    border = BorderStroke(width = 3.dp, color =Pink40)
                 ) {
                     Box(
                         modifier = Modifier
@@ -207,7 +189,7 @@ fun HomeScreen(navController:NavHostController) {
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
                         textAlign = TextAlign.Center,
-                        color = Black,
+                        color = Color.Black,
                         modifier = Modifier
                             .padding(start = 30.dp, end = 30.dp))
 
@@ -215,38 +197,57 @@ fun HomeScreen(navController:NavHostController) {
 
                     Button(
                         onClick = {
-                                  navController.navigate(DASHBOARD_URL)
+                            navController.navigate(DASHBOARD_URL)
                         },
+                        colors =ButtonDefaults.buttonColors(Purple80),
                         modifier = Modifier
                             .padding(start = 40.dp, top = 10.dp)
                     )
                     {
                         Text(
-                            text = "START",
+                            text = "NEXT",
                             color = Color.White
                         )
 
                     }
+
+                    Text(text = "Upload Instructions.",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.ExtraBold,
+                        textAlign = TextAlign.Center,
+                        textDecoration = TextDecoration.Underline,
+                        color = Color.Black,
+                        modifier = Modifier
+                            .padding(top = 20.dp, start = 20.dp)
+                            .clickable {
+                                navController.navigate(UPLOAD_URL)
+                            })
                 }
                 Spacer(modifier = Modifier.height(5.dp))
 
 
             }
-            //end of column2
-            Spacer(modifier = Modifier.width(30.dp))
+            Spacer(modifier = Modifier.height(5.dp))
 
 
-            //column3
         }
-        
+        //end of column2
+        Spacer(modifier = Modifier.width(30.dp))
 
+
+
+        }
+
+
+        //column3
     }
-}
+
+
+
 
 @Composable
 @Preview(showBackground = true)
 fun HomeScreenPreview(){
-    WazitoECommerceTheme {
+
         HomeScreen(navController = rememberNavController())
     }
-}

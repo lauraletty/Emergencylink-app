@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.navigation.NavHostController
-import com.example.wazitoecommerce.models.Product
+import com.example.wazitoecommerce.models.faint
 import com.example.wazitoecommerce.navigation.LOGIN_URL
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -15,8 +15,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 
-class ProductViewModel(var navController:NavHostController, var context: Context) {
-    var authViewModel:AuthViewModel
+class FaintViewModel(var navController:NavHostController, var context: Context) {
+    var authViewModel: AuthViewModel
     var progress:ProgressDialog
     init {
         authViewModel = AuthViewModel(navController, context)
@@ -28,10 +28,10 @@ class ProductViewModel(var navController:NavHostController, var context: Context
         progress.setMessage("Please wait...")
     }
 
-    fun uploadProduct(name:String, quantity:String, price:String, filePath:Uri){
-        val productId = System.currentTimeMillis().toString()
+    fun uploadInstruction(instruction:String,filePath:Uri){
+        val InstructionId = System.currentTimeMillis().toString()
         val storageRef = FirebaseStorage.getInstance().getReference()
-                                .child("Products/$productId")
+            .child("faints/$InstructionId")
         progress.show()
         storageRef.putFile(filePath).addOnCompleteListener{
             progress.dismiss()
@@ -39,10 +39,11 @@ class ProductViewModel(var navController:NavHostController, var context: Context
                 // Save data to db
                 storageRef.downloadUrl.addOnSuccessListener {
                     var imageUrl = it.toString()
-                    var product = Product(name,quantity,price,imageUrl,productId)
-                    var databaseRef = FirebaseDatabase.getInstance().getReference()
-                        .child("Products/$productId")
-                    databaseRef.setValue(product).addOnCompleteListener {
+                    var instruction1= it.toString()
+                    var instruction2 = it.toString()
+                    var ins = faint(instruction, instruction1, instruction2,imageUrl,InstructionId)
+                    var databaseRef = FirebaseDatabase.getInstance().getReference().child("faints/$InstructionId")
+                    databaseRef.setValue(instruction).addOnCompleteListener {
                         if (it.isSuccessful){
                             Toast.makeText(this.context, "Success", Toast.LENGTH_SHORT).show()
                         }else{
@@ -56,19 +57,19 @@ class ProductViewModel(var navController:NavHostController, var context: Context
         }
     }
 
-    fun allProducts(
-        product:MutableState<Product>,
-        products:SnapshotStateList<Product>):SnapshotStateList<Product>{
+    fun allInstructions(
+        Instruction:MutableState<faint>,
+        Instructions:SnapshotStateList<faint>
+    ):SnapshotStateList<faint>{
         progress.show()
-        var ref = FirebaseDatabase.getInstance().getReference()
-                    .child("Products")
+        var ref = FirebaseDatabase.getInstance().getReference().child("faint")
         ref.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                products.clear()
+                Instructions.clear()
                 for (snap in snapshot.children){
-                    var retrievedProduct = snap.getValue(Product::class.java)
-                    product.value = retrievedProduct!!
-                    products.add(retrievedProduct)
+                    var value = snap.getValue(faint::class.java)
+                    Instruction.value = value!!
+                    Instructions.add(value)
                 }
                 progress.dismiss()
             }
@@ -77,12 +78,12 @@ class ProductViewModel(var navController:NavHostController, var context: Context
                 Toast.makeText(context, "DB locked", Toast.LENGTH_SHORT).show()
             }
         })
-        return products
+        return Instructions
     }
 
-    fun deleteProduct(productId:String){
+    fun deleteInstruction(InstructionID:String){
         var ref = FirebaseDatabase.getInstance().getReference()
-                            .child("Products/$productId")
+            .child("faints/$InstructionID")
         ref.removeValue()
         Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
     }
